@@ -1,0 +1,110 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
+
+    defaultConfig {
+        applicationId "com.lyecdevelopers.ekibanda"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensionsVersion"
+
+    //kotlin coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.kotlinxVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.kotlinxVersion"
+
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.ext.rxbindingVersion"
+
+    //room
+    implementation "androidx.room:room-runtime:$rootProject.ext.roomDatabaseVersion"
+    kapt "androidx.room:room-compiler:$rootProject.ext.roomDatabaseVersion"
+    implementation "androidx.room:room-rxjava2:$rootProject.ext.roomDatabaseVersion"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.ext.retrofitConverterScalars"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpLoggingInterceptorVersion"
+
+    //dagger 2
+    implementation "com.google.dagger:dagger:$rootProject.ext.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.ext.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    //picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.ext.picassoVersion"
+
+    /**
+     * Logging
+     */
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.timber_version"
+
+    // Kotlin navigation component
+    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.ext.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$rootProject.ext.nav_version")
+
+}

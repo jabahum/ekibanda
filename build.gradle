@@ -1,0 +1,70 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.30"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+           }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    // App dependencies
+    kotlinVersion = kotlin_version
+    androidxSupportVersion = '1.0.0'
+    coreVersion = '1.0.2'
+    coreKtxVersion = '1.0.2'
+    lifecycleExtensionsVersion = '2.0.0'
+    calligraphyVersion = '2.2.0'
+    kotlinxVersion = '1.2.1'
+
+    //dagger2
+    dagger2Version = '2.28'
+    timber_version = '4.7.1'
+
+
+    rxjava2Version = '2.2.0'
+    rxandroidVersion = '2.1.0'
+    rxbindingVersion = '2.1.1'
+
+    roomDatabaseVersion = '2.1.0'
+
+    eventbusVersion = '3.1.1'
+
+    retrofitVersion = '2.4.0'
+    retrofitConverterScalars = '2.1.0'
+    okhttpVersion = '3.10.0'
+    okhttpLoggingInterceptorVersion = '3.9.1'
+
+    picassoVersion = '2.71828'
+
+    // google architecture components: live data
+    architectureVersion = '1.1.1'
+
+    //Test dependencies
+    junitVersion = '4.12'
+    runnerVersion = '1.2.0'
+    espressoVersion = '3.2.0'
+
+     nav_version = '2.3.5'
+
+}
