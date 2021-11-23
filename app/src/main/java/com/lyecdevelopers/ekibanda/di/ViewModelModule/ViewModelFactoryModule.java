@@ -8,6 +8,9 @@ import com.lyecdevelopers.ekibanda.ViewModelProviderFactory;
 import dagger.Binds;
 import dagger.Module;
 
+/**
+ * created by jaba
+ */
 @Module
 public abstract class ViewModelFactoryModule {
     @Binds

@@ -22,7 +22,18 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            buildConfigField("String", "BASE_URL", "\"https://foodie-ug.herokuapp.com/api/v1/\"")
+            buildConfigField("String", "LAST_UPDATED", "\"8 Nov 2021\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            ext.enableCrashlytics = true
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            manifestPlaceholders = [appNameSuffix: " Dev"]
+            buildConfigField("String", "BASE_URL", "\"https://foodie-ug.herokuapp.com/api/v1/\"")
+            buildConfigField("String", "LAST_UPDATED", "\"8 Nov 2021\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {

@@ -27,6 +27,9 @@ import com.lyecdevelopers.ekibanda.ui.walkthrough.WalkThroughActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
+/**
+ * created by jaba
+ */
 @Module
 public abstract class ActivityBuildersModule {
 

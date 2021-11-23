@@ -1,6 +1,6 @@
 package com.lyecdevelopers.ekibanda.ui._base
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,7 +18,7 @@ import timber.log.Timber
 /**
  * created by jaba
  */
-abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
+abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
     private var mActivity: BaseActivity<*>? = null
     private var mRootView: View? = null
     private var mViewDataBinding: T? = null
@@ -71,12 +71,13 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel> : DaggerFra
         mViewModel = getViewModel()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
         if (context != null) {
-            super.onAttach(context)
+            super.onAttach(requireContext())
         }
         if (context is BaseActivity<*>) {
-            val activity: BaseActivity<*> = context
+            val activity: BaseActivity<*> = context as BaseActivity<*>
             mActivity = activity
         }
     }
