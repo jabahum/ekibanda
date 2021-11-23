@@ -52,7 +52,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         savedInstanceState: Bundle?
     ): View? {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        mRootView = mViewDataBinding.getRoot()
+        mRootView = mViewDataBinding?.root
         setHasOptionsMenu(true)
         return mRootView
     }

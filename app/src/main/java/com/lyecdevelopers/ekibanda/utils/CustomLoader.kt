@@ -20,16 +20,16 @@ class CustomLoader(private var message: String) : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.progress_bar, container, false)
-        return binding.getRoot()
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding?.setMessage(message)
+        binding?.message = message
     }
 
     fun setMessage(message: String) {
         this.message = message
-        binding?.setMessage(message)
+        binding?.message = message
     }
 
     override fun getTheme(): Int {
