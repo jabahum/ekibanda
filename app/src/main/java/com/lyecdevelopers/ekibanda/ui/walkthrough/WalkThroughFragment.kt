@@ -1,14 +1,32 @@
 package com.lyecdevelopers.ekibanda.ui.walkthrough
 
+import androidx.lifecycle.ViewModelProvider
+import com.lyecdevelopers.ekibanda.R
+import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.databinding.WalkthroughFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
+import javax.inject.Inject
 
-class WalkThroughFragment: BaseFragment<WalkthroughFragmentBinding, WalkThroughViewModel>() {
+class WalkThroughFragment : BaseFragment<WalkthroughFragmentBinding, WalkThroughViewModel>() {
+
+
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
+
+    lateinit var binding: WalkthroughFragmentBinding
+
+    lateinit var walkThroughViewModel: WalkThroughViewModel
+
     override fun getViewModel(): WalkThroughViewModel {
-        TODO("Not yet implemented")
+        walkThroughViewModel =
+            ViewModelProvider(
+                getBaseActivity()!!,
+                providerFactory
+            ).get(WalkThroughViewModel::class.java)
+        return walkThroughViewModel
     }
 
     override fun getLayoutId(): Int {
-        TODO("Not yet implemented")
+        return R.layout.walkthrough_fragment
     }
 }

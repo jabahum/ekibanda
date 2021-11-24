@@ -1,14 +1,32 @@
 package com.lyecdevelopers.ekibanda.ui.account.register
 
+import androidx.lifecycle.ViewModelProvider
+import com.lyecdevelopers.ekibanda.R
+import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.databinding.RegisterFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
+import javax.inject.Inject
 
-class RegisterFragment: BaseFragment<RegisterFragmentBinding, RegisterViewModel>() {
+class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel>() {
+
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
+
+    lateinit var binding: RegisterFragmentBinding
+
+    lateinit var registerViewModel: RegisterViewModel
+
     override fun getViewModel(): RegisterViewModel {
-        TODO("Not yet implemented")
+        registerViewModel =
+            ViewModelProvider(
+                getBaseActivity()!!,
+                providerFactory
+            ).get(RegisterViewModel::class.java)
+        return registerViewModel
     }
 
     override fun getLayoutId(): Int {
-        TODO("Not yet implemented")
+
+        return R.layout.register_fragment
     }
 }
