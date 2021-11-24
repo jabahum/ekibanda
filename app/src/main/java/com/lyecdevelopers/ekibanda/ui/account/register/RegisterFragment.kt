@@ -19,9 +19,9 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel
     override fun getViewModel(): RegisterViewModel {
         registerViewModel =
             ViewModelProvider(
-                getBaseActivity()!!,
+                getBaseActivity(),
                 providerFactory
-            ).get(RegisterViewModel::class.java)
+            )[RegisterViewModel::class.java]
         return registerViewModel
     }
 

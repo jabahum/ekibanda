@@ -19,11 +19,11 @@ import timber.log.Timber
  * created by jaba
  */
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFragment() {
-    private var mActivity: BaseActivity<*>? = null
-    private var mRootView: View? = null
-    private var mViewDataBinding: T? = null
-    private var mViewModel: V? = null
-    private var mNavController: NavController? = null
+    private lateinit var mActivity: BaseActivity<*>
+    private lateinit var mRootView: View
+    private lateinit var mViewDataBinding: T
+    private lateinit var mViewModel: V
+    private lateinit var mNavController: NavController
 
     /**
      * Override for set view model
@@ -32,11 +32,11 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
      */
     abstract fun getViewModel(): V
 
-    open fun getBaseActivity(): BaseActivity<*>? {
+    open fun getBaseActivity(): BaseActivity<*> {
         return mActivity
     }
 
-    open fun getViewDataBinding(): T? {
+    open fun getViewDataBinding(): T {
         return mViewDataBinding
     }
 
@@ -52,7 +52,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
         savedInstanceState: Bundle?
     ): View? {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        mRootView = mViewDataBinding?.root
+        mRootView = mViewDataBinding.root
         setHasOptionsMenu(true)
         return mRootView
     }
@@ -60,7 +60,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         try {
-            mNavController = mRootView?.let { Navigation.findNavController(it) }
+            mNavController = mRootView.let { Navigation.findNavController(it) }
         } catch (e: Exception) {
             Timber.e(e)
         }

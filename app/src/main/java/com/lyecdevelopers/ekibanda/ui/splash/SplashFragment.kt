@@ -20,9 +20,9 @@ class SplashFragment : BaseFragment<SplashFragmentBinding, SplashViewModel>() {
     override fun getViewModel(): SplashViewModel {
         splashViewModel =
             ViewModelProvider(
-                getBaseActivity()!!,
+                getBaseActivity(),
                 providerFactory
-            ).get(SplashViewModel::class.java)
+            )[SplashViewModel::class.java]
         return splashViewModel
     }
 

@@ -19,7 +19,7 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
     override fun getViewModel(): LoginViewModel {
         loginViewModel =
-            ViewModelProvider(getBaseActivity()!!, providerFactory).get(LoginViewModel::class.java)
+            ViewModelProvider(getBaseActivity(), providerFactory)[LoginViewModel::class.java]
         return loginViewModel
     }
 

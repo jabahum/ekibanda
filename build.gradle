@@ -67,5 +67,7 @@ ext {
     espressoVersion = '3.2.0'
 
      nav_version = '2.3.5'
+    arch_version = '2.4.0'
+
 
 }

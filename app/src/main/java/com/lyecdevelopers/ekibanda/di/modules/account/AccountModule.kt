@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 class AccountModule {
     @AccountScope
     @Provides
-    fun provideLoginApi(retrofit: Retrofit): LoginApi? {
+    fun provideLoginApi(retrofit: Retrofit): LoginApi {
         return retrofit.create(LoginApi::class.java)
     }
 

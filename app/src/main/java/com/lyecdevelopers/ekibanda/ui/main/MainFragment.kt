@@ -19,9 +19,9 @@ class MainFragment : BaseFragment<MainFragmentBinding, MainViewModel>() {
     override fun getViewModel(): MainViewModel {
         mainViewModel =
             ViewModelProvider(
-                getBaseActivity()!!,
+                getBaseActivity(),
                 providerFactory
-            ).get(MainViewModel::class.java)
+            )[MainViewModel::class.java]
         return mainViewModel
     }
 

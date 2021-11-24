@@ -20,9 +20,9 @@ class WalkThroughFragment : BaseFragment<WalkthroughFragmentBinding, WalkThrough
     override fun getViewModel(): WalkThroughViewModel {
         walkThroughViewModel =
             ViewModelProvider(
-                getBaseActivity()!!,
+                getBaseActivity(),
                 providerFactory
-            ).get(WalkThroughViewModel::class.java)
+            )[WalkThroughViewModel::class.java]
         return walkThroughViewModel
     }
 

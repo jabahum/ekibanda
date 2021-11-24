@@ -45,7 +45,7 @@ android {
     }
 
     dataBinding {
-        enabled = true
+        enabled true
     }
 
     androidExtensions {
@@ -70,6 +70,8 @@ dependencies {
 
     // lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensionsVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.arch_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.arch_version"
 
     //kotlin coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.kotlinxVersion"

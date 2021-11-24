@@ -11,7 +11,7 @@ import dagger.android.support.DaggerAppCompatActivity
  * created by jaba
  */
 abstract class BaseActivity <V: ViewDataBinding> : DaggerAppCompatActivity() {
-    private var mViewDataBinding: V? = null
+    private lateinit var mViewDataBinding: V
 
     /**
      * Override for set binding variable
@@ -31,7 +31,7 @@ abstract class BaseActivity <V: ViewDataBinding> : DaggerAppCompatActivity() {
         performDataBinding()
     }
 
-    open fun getViewDataBinding(): V? {
+    open fun getViewDataBinding(): V {
         return mViewDataBinding
     }
 
