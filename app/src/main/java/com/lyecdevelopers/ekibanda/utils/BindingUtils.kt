@@ -1,23 +1,28 @@
 package com.lyecdevelopers.ekibanda.utils
 
 import android.R
+import android.annotation.SuppressLint
 import android.view.View
-import android.widget.ImageView
-import org.apache.commons.lang3.StringUtils
+import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatSpinner
+import androidx.databinding.BindingAdapter
 import java.util.*
 
 object BindingUtils {
-    @BindingAdapter("imageDrawable")
-    fun setImage(imageView: ImageView, id: Number?) {
-        if (id != null) {
-            try {
-                imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, id.toInt()))
-            } catch (e: Exception) {
-                Timber.e(e)
-            }
-        }
-    }
-
+    /* @JvmStatic
+     @BindingAdapter("imageDrawable")
+     fun setImage(imageView: ImageView, id: Number?) {
+         if (id != null) {
+             try {
+                 imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, id.toInt()))
+             } catch (e: Exception) {
+                 Timber.e(e)
+             }
+         }
+     }
+ */
     /*   @SuppressLint("DefaultLocale")
     @BindingAdapter(value = {"zonedDate", "format"}, requireAll = false)
     public static void setZonedDateTime(TextView tv, ZonedDateTime dateTime, String format) {
@@ -34,149 +39,145 @@ object BindingUtils {
     @BindingAdapter(value = ["date"], requireAll = false)
     fun setDateTime(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
-            tv.setText("No Date")
+            tv.text = "No Date"
             return
         }
-        tv.setText(String.format("%s", CommonUtils.dateToTime(dateTime)))
+        tv.text = String.format("%s", CommonUtils.dateToTime(dateTime))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter(value = ["day"], requireAll = false)
     fun setDateTimeDay(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
-            tv.setText("No Date")
+            tv.text = "No Date"
             return
         }
-        tv.setText(String.format("%s", CommonUtils.dateToTimeDay(dateTime)))
+        tv.text = String.format("%s", CommonUtils.dateToTimeDay(dateTime))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter(value = ["month"], requireAll = false)
     fun setDateTimeMonth(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
-            tv.setText("No Date")
+            tv.text = "No Date"
             return
         }
-        tv.setText(String.format("%s", CommonUtils.dateToTimeMonth(dateTime)))
+        tv.text = String.format("%s", CommonUtils.dateToTimeMonth(dateTime))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("ugxText")
     fun showUGX(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("UGX 0")
+            tv.text = "UGX 0"
             return
         }
-        tv.setText(String.format("UGX %s", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("UGX %s", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("extra")
     fun setExtra(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Add Extra ")
+            tv.text = "Add Extra "
             return
         }
-        tv.setText(String.format("Add Extra (%s)", value.toInt()))
+        tv.text = String.format("Add Extra (%s)", value.toInt())
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("cartItems")
     fun showCartItems(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("0 items")
+            tv.text = "0 items"
             return
         }
-        tv.setText(String.format("%s items", value.toInt()))
+        tv.text = String.format("%s items", value.toInt())
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("qty")
     fun showQty(tv: TextView, value: Number) {
-        tv.setText(String.format("%s", value.toInt()))
+        tv.text = String.format("%s", value.toInt())
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("grandTotal")
     fun showTotal(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Grand Total : UGX 0 ")
+            tv.text = "Grand Total : UGX 0 "
             return
         }
-        tv.setText(String.format("Grand Total : UGX %s ", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("Grand Total : UGX %s ", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("deliveryTotal")
     fun showDeliveryTotal(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Delivery Charge : UGX 0 ")
+            tv.text = "Delivery Charge : UGX 0 "
             return
         }
-        tv.setText(String.format("Delivery Charge : UGX %s ", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("Delivery Charge : UGX %s ", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("serviceTax")
     fun showServiceTax(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Total : UGX 0 ")
+            tv.text = "Total : UGX 0 "
             return
         }
-        tv.setText(String.format("Total : UGX %s ", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("Total : UGX %s ", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter(value = ["total", "delivery"])
     fun showGrandTotal(tv: TextView, total: Number?, deliveryTotal: Number?) {
         if (total == null || deliveryTotal == null) {
-            tv.setText("Total Charge : UGX 0 ")
+            tv.text = "Total Charge : UGX 0 "
             return
         }
         val grandTotal = total.toInt() + deliveryTotal.toInt()
-        tv.setText(String.format("Total Charge : UGX %s ", CommonUtils.commas(grandTotal)))
+        tv.text = String.format("Total Charge : UGX %s ", CommonUtils.commas(grandTotal))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("itemsTotal")
     fun showItemTotal(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Items Total : UGX 0 ")
+            tv.text = "Items Total : UGX 0 "
             return
         }
-        tv.setText(String.format("Items Total : UGX %s ", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("Items Total : UGX %s ", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("percent")
     fun showPercent(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("0 %")
+            tv.text = "0 %"
             return
         }
-        tv.setText(String.format("-%s %%", CommonUtils.commas(value.toDouble())))
+        tv.text = String.format("-%s %%", CommonUtils.commas(value.toDouble()))
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("bind:price", "bind:discount")
     fun showDiscount(tv: TextView, price: Double, discount: Double) {
-        tv.setText(
-            String.format(
-                "UGX %s",
-                CommonUtils.commas(CommonUtils.calculateDiscount(price, discount))
-            )
+        tv.text = String.format(
+            "UGX %s",
+            CommonUtils.commas(CommonUtils.calculateDiscount(price, discount))
         )
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter(value = ["price", "totalQty"])
     fun showAmount(tv: TextView, price: Number?, totalQty: Number?) {
-        tv.setText(
-            String.format(
-                "UGX %s", CommonUtils.commas(
-                    CommonUtils.calculateAmount(
-                        price!!, totalQty!!
-                    )
+        tv.text = String.format(
+            "UGX %s", CommonUtils.commas(
+                CommonUtils.calculateAmount(
+                    price!!, totalQty!!
                 )
             )
         )
@@ -186,44 +187,44 @@ object BindingUtils {
     @BindingAdapter("kgText")
     fun showKgs(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("0 kg")
+            tv.text = "0 kg"
             return
         }
-        tv.setText(String.format("%.1f kg", value.toDouble()))
+        tv.text = String.format("%.1f kg", value.toDouble())
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("userName")
     fun showKgs(tv: TextView, value: String?) {
         if (value == null) {
-            tv.setText("Hey User")
+            tv.text = "Hey User"
             return
         }
-        tv.setText(String.format("Hey %s", value))
+        tv.text = String.format("Hey %s", value)
     }
 
     @SuppressLint("DefaultLocale")
     @BindingAdapter("acreText")
     fun showAcres(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("0 Acres")
+            tv.text = "0 Acres"
             return
         }
-        tv.setText(String.format("%.2f Acres", value.toDouble()))
+        tv.text = String.format("%.2f Acres", value.toDouble())
     }
 
     @SuppressLint("DefaultLocale", "ResourceAsColor")
     @BindingAdapter("status")
     fun showStatus(tv: TextView, value: Number?) {
         if (value == null) {
-            tv.setText("Pending")
+            tv.text = "Pending"
             return
         }
         when (value.toInt()) {
-            1 -> tv.setText("Pending")
-            2 -> tv.setText("Scheduled for Delivery")
-            3 -> tv.setText("Delivered")
-            4 -> tv.setText("Canceled")
+            1 -> tv.text = "Pending"
+            2 -> tv.text = "Scheduled for Delivery"
+            3 -> tv.text = "Delivered"
+            4 -> tv.text = "Canceled"
         }
     }
 
@@ -231,25 +232,25 @@ object BindingUtils {
     @BindingAdapter(value = ["doubleText", "placeHolder"], requireAll = false)
     fun showDouble(tv: TextView, value: Number?, placeHolder: String?) {
         if (value == null || value.toDouble() == 0.0) {
-            tv.setText(placeHolder ?: "0")
+            tv.text = placeHolder ?: "0"
             return
         }
-        tv.setText(String.format("%d", value.toInt()))
+        tv.text = String.format("%d", value.toInt())
     }
 
     @BindingAdapter(value = ["commas", "placeHolder"], requireAll = false)
     fun showCommas(tv: TextView, value: Number?, placeHolder: String?) {
         if (value == null || value.toInt() == 0) {
-            tv.setText(placeHolder ?: "0")
+            tv.text = placeHolder ?: "0"
             return
         }
-        tv.setText(String.format(Locale.US, "%s", CommonUtils.commas(value.toInt())))
+        tv.text = String.format(Locale.US, "%s", CommonUtils.commas(value.toInt()))
     }
 
-    @BindingAdapter("capitalize")
+    /*@BindingAdapter("capitalize")
     fun capitalizeText(tv: TextView, text: String?) {
         tv.setText(StringUtils.capitalize(text))
-    }
+    }*/
 
     /*@BindingAdapter({"crops"})
     public static void setCrops(AppCompatSpinner spinner, List<Crop> crops) {
@@ -266,7 +267,7 @@ object BindingUtils {
             adapter.notifyDataSetChanged();
         }
     }*/
-    @BindingAdapter("districts")
+   /* @BindingAdapter("districts")
     fun setDistricts(spinner: AppCompatSpinner, districts: List<String?>?) {
         if (districts != null) {
             districts.add(0, "Select District")
@@ -278,17 +279,17 @@ object BindingUtils {
             spinner.setAdapter(adapter)
             adapter.notifyDataSetChanged()
         }
-    }
+    }*/
 
     @BindingAdapter("options")
     fun setOptions(spinner: AppCompatSpinner, options: List<String?>?) {
         if (options != null) {
             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                spinner.getContext(),
+                spinner.context,
                 R.layout.simple_spinner_item, options
             )
             adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            spinner.setAdapter(adapter)
+            spinner.adapter = adapter
             adapter.notifyDataSetChanged()
         }
     }
@@ -308,11 +309,11 @@ object BindingUtils {
     fun setSpinnerData(spinner: AppCompatSpinner, data: List<String?>?, current: String?) {
         if (data != null) {
             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                spinner.getContext(),
+                spinner.context,
                 R.layout.simple_spinner_item, data
             )
             adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            spinner.setAdapter(adapter)
+            spinner.adapter = adapter
             adapter.notifyDataSetChanged()
             if (current != null && data.contains(current)) {
                 spinner.setSelection(adapter.getPosition(current))

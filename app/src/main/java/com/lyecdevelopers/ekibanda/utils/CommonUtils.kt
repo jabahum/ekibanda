@@ -169,7 +169,7 @@ object CommonUtils {
 
     fun numberToNth(n: Int?): String {
         if (n == null || n <= 0) return ""
-        return if (n >= 11 && n <= 13) {
+        return if (n in 11..13) {
             n.toString() + "ᵗʰ"
         } else when (n % 10) {
             1 -> n.toString() + "ˢᵗ"

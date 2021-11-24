@@ -1,6 +1,7 @@
 package com.lyecdevelopers.ekibanda.di.modules
 
 import android.app.Application
+import com.lyecdevelopers.ekibanda.BuildConfig
 import com.lyecdevelopers.ekibanda.data.local.db.EkibandaDatabase
 import com.lyecdevelopers.ekibanda.data.local.db.user.LocalUserDataSource
 import com.lyecdevelopers.ekibanda.data.local.db.user.UserDataSource

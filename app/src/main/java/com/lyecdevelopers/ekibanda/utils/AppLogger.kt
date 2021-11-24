@@ -1,6 +1,7 @@
 
 package com.lyecdevelopers.ekibanda.utils
 
+import com.lyecdevelopers.ekibanda.BuildConfig
 import timber.log.Timber
 
 /**

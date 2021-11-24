@@ -1,5 +1,6 @@
 package com.lyecdevelopers.ekibanda
 
+import com.lyecdevelopers.ekibanda.di.Component.DaggerAppComponent
 import com.lyecdevelopers.ekibanda.utils.AppLogger
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
