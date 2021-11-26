@@ -2,14 +2,10 @@
 <resources>
     <color name="colorPrimary">#ff4200</color>
     <color name="colorPrimaryDark">#ff4200</color>
+    <color name="colorPrimaryLight">#ff4200</color>
     <color name="colorAccent">#ff4200</color>
-    <color name="colorWhite">#F3F8F7</color>
-    <color name="read_200">#D9534F</color>
-    <color name="read_700">#D9534F</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="darkGrey">#2F2929</color>
-    <color name="hintColor">#808080</color>
-    <color name="backgroundColor">#f0f1f8</color>
+    <color name="colorAccentDark">#ff4200</color>
+    <color name="colorAccentLight">#ff4200</color>
 
 
     <!--custom defined text colors-->

@@ -24,7 +24,7 @@
         <item name="fontFamily">@font/pt_sans_narrow</item>
         <item name="android:fontFamily">@font/pt_sans_narrow</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/white_dark</item>
     </style>
 
 
