@@ -9,6 +9,7 @@ import com.lyecdevelopers.ekibanda.R
 import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.databinding.SplashFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
+import com.lyecdevelopers.ekibanda.ui.main.MainActivity
 import javax.inject.Inject
 
 class SplashFragment : BaseFragment<SplashFragmentBinding, SplashViewModel>() {
@@ -20,6 +21,8 @@ class SplashFragment : BaseFragment<SplashFragmentBinding, SplashViewModel>() {
     lateinit var binding: SplashFragmentBinding
 
     lateinit var splashViewModel: SplashViewModel
+
+    private var handler: Handler = Handler()
 
     override fun getViewModel(): SplashViewModel {
         splashViewModel =
@@ -38,13 +41,13 @@ class SplashFragment : BaseFragment<SplashFragmentBinding, SplashViewModel>() {
         binding = getViewDataBinding()
         init()
     }
+
     private fun init() {
 
         // set version name
         binding.versionName = "v" + BuildConfig.VERSION_NAME
 
-      /*  // handle loading
-        handler = Handler()
-        handler.postDelayed(Runnable { newActivity(MainActivity::class.java) }, 5000)*/
+        // handle loading
+        handler.postDelayed({ newActivity(MainActivity::class.java) }, 2000)
     }
 }

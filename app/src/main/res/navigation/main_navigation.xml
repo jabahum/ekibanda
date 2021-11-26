@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
 
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.main.MainFragment"
+        android:label="Ekibanda"
+        tools:layout="@layout/main_fragment" />
 </navigation>

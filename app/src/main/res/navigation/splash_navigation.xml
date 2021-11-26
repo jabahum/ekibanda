@@ -9,5 +9,5 @@
         tools:layout="@layout/splash_fragment"
         android:id="@+id/splashFragment"
         android:name="com.lyecdevelopers.ekibanda.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="Splash" />
 </navigation>
