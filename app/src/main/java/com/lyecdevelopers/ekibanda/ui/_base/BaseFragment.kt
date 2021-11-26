@@ -73,9 +73,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        if (context != null) {
-            super.onAttach(requireContext())
-        }
         if (context is BaseActivity<*>) {
             val activity: BaseActivity<*> = context as BaseActivity<*>
             mActivity = activity
@@ -83,6 +80,16 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     }
 
 
+    // loading
+    protected open fun showLoading(message: String?) {
+        mActivity.showLoading(message)
+    }
+
+    protected open fun hideLoading() {
+        mActivity.hideLoading()
+    }
+
+    // intent
     protected open fun <Z> newIntent(clazz: Class<Z>?): Intent? {
         return Intent(getBaseActivity(), clazz)
     }
