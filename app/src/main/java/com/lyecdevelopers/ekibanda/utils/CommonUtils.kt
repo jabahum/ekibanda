@@ -211,7 +211,7 @@ object CommonUtils {
 
         // Get date from string
         val dateFormatter =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
         var date: Date? = null
         try {
             date = dateFormatter.parse(dateString)
@@ -220,17 +220,17 @@ object CommonUtils {
         }
 
         // Get time from date
-        val timeFormatter = SimpleDateFormat("dd MMM yyyy")
+        val timeFormatter = SimpleDateFormat("dd MMM yyyy", Locale.US)
 
         //Date dateString = toDate(date, "yyyy-MM-dd'T'HH:mm:ss"); //new Date(date);
         return timeFormatter.format(date)
     }
 
-    fun dateToTimeMonth(dateString: String?): String {
+    fun dateToTimeMonth(dateString: String): String {
 
         // Get date from string
         val dateFormatter =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
         var date: Date? = null
         try {
             date = dateFormatter.parse(dateString)
@@ -239,17 +239,17 @@ object CommonUtils {
         }
 
         // Get time from date
-        val timeFormatter = SimpleDateFormat("MMM")
+        val timeFormatter = SimpleDateFormat("MMM",Locale.US)
 
         //Date dateString = toDate(date, "yyyy-MM-dd'T'HH:mm:ss"); //new Date(date);
         return timeFormatter.format(date)
     }
 
-    fun dateToTimeDay(dateString: String?): String {
+    fun dateToTimeDay(dateString: String): String {
 
         // Get date from string
         val dateFormatter =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
         var date: Date? = null
         try {
             date = dateFormatter.parse(dateString)
@@ -258,7 +258,7 @@ object CommonUtils {
         }
 
         // Get time from date
-        val timeFormatter = SimpleDateFormat("dd")
+        val timeFormatter = SimpleDateFormat("dd", Locale.US)
 
         //Date dateString = toDate(date, "yyyy-MM-dd'T'HH:mm:ss"); //new Date(date);
         return timeFormatter.format(date)
@@ -296,7 +296,7 @@ object CommonUtils {
     val currentTime: String
         get() {
             val dateFormatter =
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
             val calendar = GregorianCalendar.getInstance()
             return dateFormatter.format(calendar.time)
         }
