@@ -22,8 +22,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField("String", "BASE_URL", "\"https://foodie-ug.herokuapp.com/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://imdb-api.com/en/API/\"")
             buildConfigField("String", "LAST_UPDATED", "\"8 Nov 2021\"")
+            buildConfigField("String", "API_KEY", "\"k_1y8b2g9k\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -31,8 +32,9 @@ android {
             versionNameSuffix "-debug"
             minifyEnabled false
             manifestPlaceholders = [appNameSuffix: " Dev"]
-            buildConfigField("String", "BASE_URL", "\"https://foodie-ug.herokuapp.com/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://imdb-api.com/en/API/\"")
             buildConfigField("String", "LAST_UPDATED", "\"8 Nov 2021\"")
+            buildConfigField("String", "API_KEY", "\"k_1y8b2g9k\"")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -59,47 +61,75 @@ android {
 
 dependencies {
 
+    /**
+     * Kotlin
+     * */
+    //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    /**
+     * UI design
+     * */
+    // views and layouts
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    //navigation component
+    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.ext.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$rootProject.ext.nav_version")
+
+    /**
+     * Unit Testing
+     * */
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+
+    /**
+     * ViewModels
+     * */
     // lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensionsVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.arch_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.arch_version"
 
+    /**
+     * Coroutines Flow and RxJava
+     * */
     //kotlin coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.kotlinxVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.kotlinxVersion"
-
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
-    androidTestImplementation "androidx.test:runner:$rootProject.ext.runnerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 
     //rx
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
     implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.ext.rxbindingVersion"
 
+    /**
+     * Local Storage
+     * */
     //room
     implementation "androidx.room:room-runtime:$rootProject.ext.roomDatabaseVersion"
     kapt "androidx.room:room-compiler:$rootProject.ext.roomDatabaseVersion"
     implementation "androidx.room:room-rxjava2:$rootProject.ext.roomDatabaseVersion"
 
+
+    /**
+     * Data fetch
+     * */
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.ext.retrofitConverterScalars"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+
+    // okhttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpLoggingInterceptorVersion"
 
+    /**
+     * Dependency Injection ( Dagger2)
+     * */
     //dagger 2
     implementation "com.google.dagger:dagger:$rootProject.ext.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.ext.dagger2Version"
@@ -108,16 +138,17 @@ dependencies {
     testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
 
+    /**
+     * Images
+     * */
     //picasso
     implementation "com.squareup.picasso:picasso:$rootProject.ext.picassoVersion"
 
     /**
      * Logging
      */
+    // timber
     implementation "com.jakewharton.timber:timber:$rootProject.ext.timber_version"
 
-    // Kotlin navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.ext.nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$rootProject.ext.nav_version")
 
 }
