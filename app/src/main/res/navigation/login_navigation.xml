@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/login_navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.account.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.account.register.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/register_fragment" />
 </navigation>

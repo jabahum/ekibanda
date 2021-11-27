@@ -163,7 +163,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
-    @BindingAdapter("bind:price", "bind:discount")
+    @BindingAdapter(value = ["price", "discount"])
     fun showDiscount(tv: TextView, price: Double, discount: Double) {
         tv.text = String.format(
             "UGX %s",

@@ -63,7 +63,7 @@ object CommonUtils {
         return NumberFormat.getNumberInstance(Locale.US).format(value.toLong())
     }
 
-    fun isEmailValid(email: String?): Boolean {
+    fun isEmailValid(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
@@ -281,17 +281,6 @@ object CommonUtils {
         }
     }
 
-    fun shareApp(context: Context) {
-        val sendIntent = Intent()
-        sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(
-            Intent.EXTRA_TEXT,
-            "Let's farm with EzyAgric!, it's a fast and simple app we can use for our Agricultural needs.Get it at https://play.google.com/store/apps/details?id=com.ezyagric.extension.android"
-        )
-        sendIntent.type = "text/plain"
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        context.startActivity(shareIntent)
-    }
 
     val currentTime: String
         get() {
