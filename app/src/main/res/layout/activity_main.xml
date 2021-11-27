@@ -35,10 +35,22 @@
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_above="@id/nav_view"
                 android:layout_below="@id/toolbar_layout"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/main_navigation" />
 
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white_dark"
+                app:itemIconTint="@color/bottom_nav_color"
+                app:itemTextColor="@color/bottom_nav_color"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_nav_menu" />
 
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

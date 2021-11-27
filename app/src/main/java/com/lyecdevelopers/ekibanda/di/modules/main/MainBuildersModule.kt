@@ -1,6 +1,9 @@
 package com.lyecdevelopers.ekibanda.di.modules.main
 
 import com.lyecdevelopers.ekibanda.ui.main.MainFragment
+import com.lyecdevelopers.ekibanda.ui.main.discover.DiscoverFragment
+import com.lyecdevelopers.ekibanda.ui.main.home.HomeFragment
+import com.lyecdevelopers.ekibanda.ui.main.profile.ProfileFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,4 +15,15 @@ import dagger.android.ContributesAndroidInjector
 abstract class MainBuildersModule {
     @ContributesAndroidInjector
     abstract fun contributeMainFragment(): MainFragment?
+
+    @ContributesAndroidInjector
+    abstract fun contributeDiscoverFragment(): DiscoverFragment?
+
+    @ContributesAndroidInjector
+    abstract fun contributeHomeFragment(): HomeFragment?
+
+    @ContributesAndroidInjector
+    abstract fun contributeProfileFragment(): ProfileFragment?
+
+
 }
