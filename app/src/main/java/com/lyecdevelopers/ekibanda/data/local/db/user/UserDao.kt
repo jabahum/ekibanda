@@ -14,7 +14,7 @@ import io.reactivex.Single
 @Dao
 interface UserDao {
     @get:Query("SELECT * FROM user")
-    val all: Flowable<User?>?
+    val all: Flowable<List<User?>>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User?): Single<Long?>?

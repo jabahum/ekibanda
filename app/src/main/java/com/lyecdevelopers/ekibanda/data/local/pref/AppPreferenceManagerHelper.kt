@@ -10,7 +10,9 @@ interface AppPreferenceManagerHelper {
 
     //save api keys
     fun storeApiKey(key: String?)
+
     val apiKey: String?
+
     var accessToken: String?
 
     // user email
@@ -50,6 +52,5 @@ interface AppPreferenceManagerHelper {
     fun clear()
 
     // country code
-    // user phone/contact
     var countryCode: String?
 }

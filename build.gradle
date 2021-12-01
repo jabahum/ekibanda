@@ -34,7 +34,7 @@ ext {
     androidxSupportVersion = '1.0.0'
     coreVersion = '1.0.2'
     coreKtxVersion = '1.0.2'
-    lifecycleExtensionsVersion = '2.0.0'
+    lifecycleExtensionsVersion1 = '2.0.0'
     calligraphyVersion = '2.2.0'
     kotlinxVersion = '1.2.1'
 
@@ -47,11 +47,14 @@ ext {
     rxandroidVersion = '2.1.0'
     rxbindingVersion = '2.1.1'
 
+    lifeCycleVersion = "2.4.0"
+    lifeCycleExtensionVersion ="2.2.0"
+
     roomDatabaseVersion = '2.1.0'
 
     eventbusVersion = '3.1.1'
 
-    retrofitVersion = '2.4.0'
+    retrofitVersion = '2.9.0'
     retrofitConverterScalars = '2.1.0'
     okhttpVersion = '3.10.0'
     okhttpLoggingInterceptorVersion = '3.9.1'

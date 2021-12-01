@@ -8,7 +8,7 @@ import io.reactivex.Single
  * created by jaba
  */
 interface UserDataSource {
-    val users: Flowable<User?>?
+    val users: Flowable<List<User?>>?
     fun insertUser(user: User?): Single<Long?>?
     fun deleteAllUsers()
     fun insertAll(users: Array<User?>?): Single<List<Long?>?>?

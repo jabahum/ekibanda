@@ -90,9 +90,9 @@ dependencies {
      * ViewModels
      * */
     // lifecycle
-    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensionsVersion"
+    /*implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensionsVersion1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.arch_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.arch_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.arch_version"*/
 
     /**
      * Coroutines Flow and RxJava
@@ -100,6 +100,15 @@ dependencies {
     //kotlin coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.kotlinxVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.kotlinxVersion"
+
+    /**
+     * Lifecycle
+     * */
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-common:$rootProject.ext.lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.ext.lifeCycleVersion"
+//    implementation "android.arch.lifecycle:extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.lifeCycleVersion"
 
     //rx
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
@@ -122,6 +131,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+
 
     // okhttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"

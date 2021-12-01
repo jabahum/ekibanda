@@ -330,7 +330,7 @@ object CommonUtils {
             if (e is IOException) {
                 message = "No internet connection!"
             } else if (e is HttpException) {
-                val errorBody = e.response().errorBody()!!.string()
+                val errorBody = e.response()?.errorBody()!!.string()
                 val jObj = JSONObject(errorBody)
                 message = jObj.getString("msg")
             }

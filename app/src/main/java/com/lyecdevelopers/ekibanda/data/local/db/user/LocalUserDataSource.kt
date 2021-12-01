@@ -8,27 +8,27 @@ import io.reactivex.Single
  * created by jaba
  */
 class LocalUserDataSource(private val mUserDao: UserDao) : UserDataSource {
-    override val users: Flowable<User?>?
-        get() = TODO("Not yet implemented")
+    override val users: Flowable<List<User?>>?
+        get() = mUserDao.all
 
     override fun insertUser(user: User?): Single<Long?>? {
-        TODO("Not yet implemented")
+        return mUserDao.insertUser(user)
     }
 
     override fun deleteAllUsers() {
-        TODO("Not yet implemented")
+        mUserDao.deleteAllUser()
     }
 
     override fun insertAll(users: Array<User?>?): Single<List<Long?>?>? {
-        TODO("Not yet implemented")
+        return mUserDao.insertAll(users)
     }
 
     override fun update(id: String?, text: String?): Completable? {
-        TODO("Not yet implemented")
+        return mUserDao.update(id, text)
     }
 
     override fun delete(id: String?): Completable? {
-        TODO("Not yet implemented")
+        return mUserDao.delete(id)
     }
 
 }
