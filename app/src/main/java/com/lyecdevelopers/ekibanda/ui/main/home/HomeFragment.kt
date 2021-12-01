@@ -3,16 +3,15 @@ package com.lyecdevelopers.ekibanda.ui.main.home
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.lyecdevelopers.ekibanda.R
 import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.data.remote.model.common.Resource
+import com.lyecdevelopers.ekibanda.data.remote.model.main.comingsoon.Item
 import com.lyecdevelopers.ekibanda.databinding.HomeFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
-import com.lyecdevelopers.ekibanda.utils.AppLogger
-import timber.log.Timber
+import com.lyecdevelopers.ekibanda.ui.main.home.adapter.CustomAdapter
 import javax.inject.Inject
 
 
@@ -30,6 +29,8 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
     lateinit var update: Runnable
 
     private var currentPage = 0
+
+    private lateinit var _items : List<Item>
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -70,6 +71,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
                     Resource.Status.SUCCESS -> {
                         hideLoading()
                         binding.loading = false
+                        _items = resource.data?.items!!
+
+                        setComingSoon()
 
                     }
                     Resource.Status.ERROR -> {
@@ -86,6 +90,18 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
             }
         })
 
+    }
+
+    private fun setComingSoon() {
+        // set the adapter
+        val adapter = CustomAdapter(getBaseActivity(), _items)
+        binding.vpImages.adapter = adapter
+
+        binding.vpImages.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageSelected(position: Int) {}
+            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
+            override fun onPageScrollStateChanged(arg0: Int) {}
+        })
     }
 
     override fun onResume() {
