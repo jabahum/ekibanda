@@ -9,4 +9,12 @@ interface MainApi {
     @GET("ComingSoon/{apiKey}")
     suspend fun getComingSoon(@Path("apiKey") apiKey: String): Response<ComingResponse>
 
+    @GET("MostPopularMovies/{apiKey}")
+    suspend fun getPopularMovies(@Path("apiKey") apiKey: String): Response<ComingResponse>
+
+    @GET("MostPopularTVs/{apiKey}")
+    suspend fun getPopularTVs(@Path("apiKey") apiKey: String): Response<ComingResponse>
+
+    @GET("InTheaters/{apiKey}")
+    suspend fun getInTheaters(@Path("apiKey") apiKey: String): Response<ComingResponse>
 }

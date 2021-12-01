@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
 
     private var currentPage = 0
 
-    private lateinit var _items : List<Item>
+    private lateinit var _items: List<Item>
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -65,6 +65,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
         }
 
         // fetch data
+        // coming soon
         homeViewModel.comingResponse.observe(getBaseActivity(), {
             it?.let { resource ->
                 when (resource.status) {
@@ -83,6 +84,56 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
                     }
                     Resource.Status.LOADING -> {
                         showLoading("Fetching...")
+                        binding.loading = true
+
+                    }
+                }
+            }
+        })
+
+        // popular movies
+        homeViewModel.popularMoviesResponse.observe(getBaseActivity(), {
+            it?.let { resource ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.ERROR -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.LOADING -> {
+                        binding.loading = true
+                    }
+                }
+            }
+        })
+        // popular tvs
+        homeViewModel.popularTVsResponse.observe(getBaseActivity(), {
+            it?.let { resource ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.ERROR -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.LOADING -> {
+                        binding.loading = true
+                    }
+                }
+            }
+        })
+        // in theaters
+        homeViewModel.inTheatersResponse.observe(getBaseActivity(), {
+            it?.let { resource ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.ERROR -> {
+                        binding.loading = false
+                    }
+                    Resource.Status.LOADING -> {
                         binding.loading = true
 
                     }

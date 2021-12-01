@@ -8,7 +8,6 @@ import com.lyecdevelopers.ekibanda.data.remote.endpoints.main.MainApi
 import com.lyecdevelopers.ekibanda.data.remote.model.common.Resource
 import com.lyecdevelopers.ekibanda.data.remote.model.main.comingsoon.ComingResponse
 import com.lyecdevelopers.ekibanda.ui._base.BaseViewModel
-import com.lyecdevelopers.ekibanda.utils.CommonUtils.showError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,22 +15,86 @@ class HomeViewModel @Inject constructor(
     private val mainApi: MainApi,
 ) : BaseViewModel() {
 
+    // coming soon
     private val _comingSoonResponse = MediatorLiveData<Resource<ComingResponse?>>()
 
     val comingResponse: LiveData<Resource<ComingResponse?>> get() = _comingSoonResponse
 
+    // popular movies
+    private val _popularMoviesResponse = MediatorLiveData<Resource<ComingResponse?>>()
+
+    val popularMoviesResponse: LiveData<Resource<ComingResponse?>> get() = _popularMoviesResponse
+
+    // popular tvs
+    private val _popularTVsResponse = MediatorLiveData<Resource<ComingResponse?>>()
+
+    val popularTVsResponse: LiveData<Resource<ComingResponse?>> get() = _popularTVsResponse
+
+    // in theaters
+    private val _inTheatersResponse = MediatorLiveData<Resource<ComingResponse?>>()
+
+    val inTheatersResponse: LiveData<Resource<ComingResponse?>> get() = _inTheatersResponse
+
     init {
         loadComingSoonFromServer()
+        loadPopularMoviesFromServer()
+        loadPopularTVsFromServer()
+        loadInTheatersFromServer()
     }
 
+    // coming soon
     private fun loadComingSoonFromServer() {
         viewModelScope.launch {
             _comingSoonResponse.postValue(Resource.loading(null))
             mainApi.getComingSoon(BuildConfig.API_KEY).let {
-                if (it.isSuccessful){
+                if (it.isSuccessful) {
                     _comingSoonResponse.postValue(Resource.success(it.body()))
-                }else
-                    _comingSoonResponse.postValue(Resource.error(it.errorBody().toString(),null))
+                } else
+                    _comingSoonResponse.postValue(Resource.error(it.errorBody().toString(), null))
+            }
+        }
+    }
+
+    // popular movies
+    private fun loadPopularMoviesFromServer() {
+        viewModelScope.launch {
+            _popularMoviesResponse.postValue(Resource.loading(null))
+            mainApi.getPopularMovies(BuildConfig.API_KEY).let {
+                if (it.isSuccessful) {
+                    _popularMoviesResponse.postValue(Resource.success(it.body()))
+                } else
+                    _popularMoviesResponse.postValue(
+                        Resource.error(
+                            it.errorBody().toString(),
+                            null
+                        )
+                    )
+            }
+        }
+    }
+
+    // popular tvs
+    private fun loadPopularTVsFromServer() {
+        viewModelScope.launch {
+            _popularTVsResponse.postValue(Resource.loading(null))
+            mainApi.getPopularTVs(BuildConfig.API_KEY).let {
+                if (it.isSuccessful) {
+                    _popularTVsResponse.postValue(Resource.success(it.body()))
+                } else
+                    _popularTVsResponse.postValue(Resource.error(it.errorBody().toString(), null))
+            }
+        }
+    }
+
+    // in theaters
+    private fun loadInTheatersFromServer() {
+        viewModelScope.launch {
+            _inTheatersResponse.postValue(Resource.loading(null))
+            mainApi.getInTheaters(BuildConfig.API_KEY).let {
+                if (it.isSuccessful) {
+                    _inTheatersResponse.postValue(Resource.success(it.body()))
+                } else
+                    _inTheatersResponse.postValue(Resource.error(it.errorBody().toString(), null))
             }
         }
     }
