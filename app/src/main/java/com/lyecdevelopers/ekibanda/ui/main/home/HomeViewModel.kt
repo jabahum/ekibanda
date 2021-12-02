@@ -7,6 +7,9 @@ import com.lyecdevelopers.ekibanda.BuildConfig
 import com.lyecdevelopers.ekibanda.data.remote.endpoints.main.MainApi
 import com.lyecdevelopers.ekibanda.data.remote.model.common.Resource
 import com.lyecdevelopers.ekibanda.data.remote.model.main.comingsoon.ComingResponse
+import com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheatersResponse
+import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.MoviesResponse
+import com.lyecdevelopers.ekibanda.data.remote.model.main.tvs.TVsResponse
 import com.lyecdevelopers.ekibanda.ui._base.BaseViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,19 +24,19 @@ class HomeViewModel @Inject constructor(
     val comingResponse: LiveData<Resource<ComingResponse?>> get() = _comingSoonResponse
 
     // popular movies
-    private val _popularMoviesResponse = MediatorLiveData<Resource<ComingResponse?>>()
+    private val _popularMoviesResponse = MediatorLiveData<Resource<MoviesResponse?>>()
 
-    val popularMoviesResponse: LiveData<Resource<ComingResponse?>> get() = _popularMoviesResponse
+    val popularMoviesResponse: LiveData<Resource<MoviesResponse?>> get() = _popularMoviesResponse
 
     // popular tvs
-    private val _popularTVsResponse = MediatorLiveData<Resource<ComingResponse?>>()
+    private val _popularTVsResponse = MediatorLiveData<Resource<TVsResponse?>>()
 
-    val popularTVsResponse: LiveData<Resource<ComingResponse?>> get() = _popularTVsResponse
+    val popularTVsResponse: LiveData<Resource<TVsResponse?>> get() = _popularTVsResponse
 
     // in theaters
-    private val _inTheatersResponse = MediatorLiveData<Resource<ComingResponse?>>()
+    private val _inTheatersResponse = MediatorLiveData<Resource<TheatersResponse?>>()
 
-    val inTheatersResponse: LiveData<Resource<ComingResponse?>> get() = _inTheatersResponse
+    val inTheatersResponse: LiveData<Resource<TheatersResponse?>> get() = _inTheatersResponse
 
     init {
         loadComingSoonFromServer()
