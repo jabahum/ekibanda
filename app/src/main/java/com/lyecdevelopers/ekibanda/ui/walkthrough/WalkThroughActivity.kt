@@ -3,7 +3,9 @@ package com.lyecdevelopers.ekibanda.ui.walkthrough
 import com.lyecdevelopers.ekibanda.R
 import com.lyecdevelopers.ekibanda.databinding.ActivityWalkthroughBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseActivity
-
+/**
+ * created by jaba
+ * */
 class WalkThroughActivity : BaseActivity<ActivityWalkthroughBinding>() {
 
     override fun getBindingVariable(): Int {

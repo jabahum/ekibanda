@@ -25,7 +25,9 @@ import com.lyecdevelopers.ekibanda.ui.main.interfaces.TheaterItemListener
 import com.lyecdevelopers.ekibanda.ui.main.interfaces.TvsItemListener
 import javax.inject.Inject
 
-
+/**
+ * created by jaba
+ * */
 class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), TheaterItemListener,
     TvsItemListener, MovieItemListener {
 
@@ -43,9 +45,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
     private var currentPage = 0
 
     private lateinit var _items: List<Item>
-    private lateinit var _itemsMovies: List<MovieItem>
-    private lateinit var _itemsTVs: List<TVItem>
-    private lateinit var _itemsTheaters: List<TheaterItem>
+    private  var _itemsMovies: List<MovieItem>? = null
+    private  var _itemsTVs: List<TVItem>? = null
+    private  var _itemsTheaters: List<TheaterItem>? = null
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -109,7 +111,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     Resource.Status.SUCCESS -> {
                         binding.loading = false
                         _itemsMovies = resource.data?.items!!
-                        binding.movies = _itemsMovies
+                        binding.moviesList = _itemsMovies
                     }
                     Resource.Status.ERROR -> {
                         binding.loading = false
@@ -127,7 +129,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     Resource.Status.SUCCESS -> {
                         binding.loading = false
                         _itemsTVs = resource.data?.items!!
-                        binding.tvs = _itemsTVs
+                        binding.tvsList  = _itemsTVs
                     }
                     Resource.Status.ERROR -> {
                         binding.loading = false
@@ -145,7 +147,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     Resource.Status.SUCCESS -> {
                         binding.loading = false
                         _itemsTheaters = resource.data?.items!!
-                        binding.theaters = _itemsTheaters
+                        binding.theatersList = _itemsTheaters
                     }
                     Resource.Status.ERROR -> {
                         binding.loading = false

@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lyecdevelopers.ekibanda.R
 import com.lyecdevelopers.ekibanda.databinding.ActivityMainBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseActivity
-
+/**
+ * created by jaba
+ * */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController

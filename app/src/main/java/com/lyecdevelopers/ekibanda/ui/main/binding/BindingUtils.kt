@@ -9,9 +9,10 @@ import com.lyecdevelopers.ekibanda.ui.main.adapters.MoviesAdapter
 import com.lyecdevelopers.ekibanda.ui.main.adapters.TVsAdapter
 import com.lyecdevelopers.ekibanda.ui.main.adapters.TheatersAdapter
 
-class BindingUtils {
+object BindingUtils {
     @BindingAdapter("movies")
-    fun setMovies(recyclerView: RecyclerView, movieList: List<MovieItem>) {
+    @JvmStatic
+    fun setMovies(recyclerView: RecyclerView, movieList: List<MovieItem>?) {
         val adapter: MoviesAdapter? = recyclerView.adapter as MoviesAdapter?
         if (adapter != null) {
             adapter.clearItems()
@@ -21,7 +22,8 @@ class BindingUtils {
     }
 
     @BindingAdapter("tvs")
-    fun setTVs(recyclerView: RecyclerView, TVsList: List<TVItem>) {
+    @JvmStatic
+    fun setTVs(recyclerView: RecyclerView, TVsList: List<TVItem>?) {
         val adapter: TVsAdapter? = recyclerView.adapter as TVsAdapter?
         if (adapter != null) {
             adapter.clearItems()
@@ -31,7 +33,8 @@ class BindingUtils {
     }
 
     @BindingAdapter("theaters")
-    fun setTheaters(recyclerView: RecyclerView, theaterList: List<TheaterItem>) {
+    @JvmStatic
+    fun setTheaters(recyclerView: RecyclerView, theaterList: List<TheaterItem>?) {
         val adapter: TheatersAdapter? = recyclerView.adapter as TheatersAdapter?
         if (adapter != null) {
             adapter.clearItems()
@@ -39,4 +42,5 @@ class BindingUtils {
             adapter.notifyDataSetChanged()
         }
     }
+
 }

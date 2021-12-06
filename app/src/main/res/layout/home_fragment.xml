@@ -9,13 +9,13 @@
             name="loading"
             type="Boolean" />
         <variable
-            name="movies"
+            name="moviesList"
             type="java.util.List&lt;com.lyecdevelopers.ekibanda.data.remote.model.main.movies.MovieItem>" />
         <variable
-            name="tvs"
+            name="tvsList"
             type="java.util.List&lt; com.lyecdevelopers.ekibanda.data.remote.model.main.tvs.TVItem>" />
         <variable
-            name="theaters"
+            name="theatersList"
             type="java.util.List&lt;com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheaterItem>" />
     </data>
 
@@ -72,7 +72,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvMovies"
                         tools:itemCount="1"
-                        movies="@{movies}"
+                        movies="@{moviesList}"
                         tools:listitem="@layout/movie_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvTvs"
                         tools:itemCount="1"
-                        tvs="@{tvs}"
+                        tvs="@{tvsList}"
                         tools:listitem="@layout/tv_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvInTheaters"
                         tools:itemCount="1"
-                        theaters="@{theaters}"
+                        theaters="@{theatersList}"
                         tools:listitem="@layout/theater_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

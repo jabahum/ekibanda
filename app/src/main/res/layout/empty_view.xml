@@ -28,7 +28,6 @@
 
         <ImageView
             android:id="@+id/imageViewEmpty"
-            imageDrawable="@{image}"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"

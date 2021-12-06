@@ -59,13 +59,15 @@ class TheatersAdapter(private val listener: TheaterItemListener) :
         }
     }
 
-    fun addTheater(datasets: List<TheaterItem>) {
-        dataList = datasets
+    fun addTheater(datasets: List<TheaterItem>?) {
+        if (datasets != null) {
+            dataList = datasets
+        }
         notifyDataSetChanged()
     }
 
     fun clearItems() {
-//        dataList.
+//        dataList
     }
 
     // NoItem ViewHolder
@@ -79,12 +81,14 @@ class TheatersAdapter(private val listener: TheaterItemListener) :
     }
 
     // Main ViewHolder
-    inner class TheaterViewHolder constructor(binding: TheaterItemBinding) :
-        BaseViewHolder(binding.root) {
-        private val mBinding: TheaterItemBinding = binding
+    inner class TheaterViewHolder constructor(binding: TheaterItemBinding?) :
+        BaseViewHolder(binding?.root) {
+        private val mBinding: TheaterItemBinding? = binding
         override fun onBind(position: Int) {
             val theaterItem: TheaterItem = dataList[position]
-            mBinding.theater = theaterItem
+            if (mBinding != null) {
+                mBinding.theater = theaterItem
+            }
         }
     }
 }

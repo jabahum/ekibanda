@@ -6,10 +6,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="image"
-            type="java.lang.Integer" />
-
-        <variable
             name="theater"
             type="com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheaterItem" />
 

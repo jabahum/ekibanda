@@ -6,7 +6,9 @@ import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.databinding.LoginFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
 import javax.inject.Inject
-
+/**
+ * created by jaba
+ * */
 class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
 

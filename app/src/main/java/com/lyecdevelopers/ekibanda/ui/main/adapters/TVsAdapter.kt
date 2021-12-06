@@ -57,8 +57,10 @@ class TVsAdapter(private val listener: TvsItemListener) : RecyclerView.Adapter<B
         }
     }
 
-    fun addTVs(datasets: List<TVItem>) {
-        dataList = datasets
+    fun addTVs(datasets: List<TVItem>?) {
+        if (datasets != null) {
+            dataList = datasets
+        }
         notifyDataSetChanged()
     }
 
@@ -78,12 +80,14 @@ class TVsAdapter(private val listener: TvsItemListener) : RecyclerView.Adapter<B
     }
 
     // Main ViewHolder
-    inner class TVsViewHolder constructor(binding: TvItemBinding) :
-        BaseViewHolder(binding.root) {
-        private val mBinding: TvItemBinding = binding
+    inner class TVsViewHolder constructor(binding: TvItemBinding?) :
+        BaseViewHolder(binding?.root) {
+        private val mBinding: TvItemBinding? = binding
         override fun onBind(position: Int) {
             val tvItem: TVItem = dataList[position]
-            mBinding.tv = tvItem
+            if (mBinding != null) {
+                mBinding.tv = tvItem
+            }
         }
     }
 }

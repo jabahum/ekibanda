@@ -58,8 +58,10 @@ class MoviesAdapter(private val listener: MovieItemListener) :
         }
     }
 
-    fun addMovie(datasets: List<MovieItem>) {
-        dataList = datasets
+    fun addMovie(datasets: List<MovieItem>?) {
+        if (datasets != null) {
+            dataList = datasets
+        }
         notifyDataSetChanged()
     }
 
@@ -79,12 +81,14 @@ class MoviesAdapter(private val listener: MovieItemListener) :
     }
 
     // Main ViewHolder
-    inner class MovieViewHolder constructor(binding: MovieItemBinding) :
-        BaseViewHolder(binding.root) {
-        private val mBinding: MovieItemBinding = binding
+    inner class MovieViewHolder constructor(binding: MovieItemBinding?) :
+        BaseViewHolder(binding?.root) {
+        private val mBinding: MovieItemBinding? = binding
         override fun onBind(position: Int) {
             val movieItem: MovieItem = dataList[position]
-            mBinding.movie = movieItem
+            if (mBinding != null) {
+                mBinding.movie = movieItem
+            }
         }
     }
 }

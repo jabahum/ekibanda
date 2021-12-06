@@ -12,6 +12,9 @@ import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
 import com.lyecdevelopers.ekibanda.ui.main.MainActivity
 import javax.inject.Inject
 
+/**
+ * created by jaba
+ * */
 class SplashFragment : BaseFragment<SplashFragmentBinding, SplashViewModel>() {
 
 

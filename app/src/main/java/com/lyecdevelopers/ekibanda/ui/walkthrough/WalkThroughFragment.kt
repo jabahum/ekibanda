@@ -6,7 +6,9 @@ import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.databinding.WalkthroughFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
 import javax.inject.Inject
-
+/***
+ * created by jaba
+ * */
 class WalkThroughFragment : BaseFragment<WalkthroughFragmentBinding, WalkThroughViewModel>() {
 
 

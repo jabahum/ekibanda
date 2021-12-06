@@ -23,7 +23,8 @@ object BindingUtils {
     }*/
 
     @BindingAdapter("image")
-    fun loadImage(view: ImageView, imageUrl: String) {
+    @JvmStatic
+    fun loadImage(view: ImageView, imageUrl: String?) {
         Picasso.get().load(imageUrl).fit().into(view)
     }
 
@@ -59,6 +60,7 @@ object BindingUtils {
         }
     }*/
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["date"], requireAll = false)
     fun setDateTime(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
@@ -69,6 +71,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["day"], requireAll = false)
     fun setDateTimeDay(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
@@ -79,6 +82,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["month"], requireAll = false)
     fun setDateTimeMonth(tv: TextView, dateTime: String?) {
         if (dateTime == null) {
@@ -89,6 +93,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("ugxText")
     fun showUGX(tv: TextView, value: Number?) {
         if (value == null) {
@@ -99,6 +104,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("extra")
     fun setExtra(tv: TextView, value: Number?) {
         if (value == null) {
@@ -109,6 +115,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("cartItems")
     fun showCartItems(tv: TextView, value: Number?) {
         if (value == null) {
@@ -119,12 +126,14 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("qty")
     fun showQty(tv: TextView, value: Number) {
         tv.text = String.format("%s", value.toInt())
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("grandTotal")
     fun showTotal(tv: TextView, value: Number?) {
         if (value == null) {
@@ -135,6 +144,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("deliveryTotal")
     fun showDeliveryTotal(tv: TextView, value: Number?) {
         if (value == null) {
@@ -145,6 +155,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("serviceTax")
     fun showServiceTax(tv: TextView, value: Number?) {
         if (value == null) {
@@ -155,6 +166,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["total", "delivery"])
     fun showGrandTotal(tv: TextView, total: Number?, deliveryTotal: Number?) {
         if (total == null || deliveryTotal == null) {
@@ -166,6 +178,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("itemsTotal")
     fun showItemTotal(tv: TextView, value: Number?) {
         if (value == null) {
@@ -176,6 +189,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("percent")
     fun showPercent(tv: TextView, value: Number?) {
         if (value == null) {
@@ -186,6 +200,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["price", "discount"])
     fun showDiscount(tv: TextView, price: Double, discount: Double) {
         tv.text = String.format(
@@ -195,6 +210,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["price", "totalQty"])
     fun showAmount(tv: TextView, price: Number?, totalQty: Number?) {
         tv.text = String.format(
@@ -207,6 +223,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("kgText")
     fun showKgs(tv: TextView, value: Number?) {
         if (value == null) {
@@ -217,6 +234,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("userName")
     fun showKgs(tv: TextView, value: String?) {
         if (value == null) {
@@ -227,6 +245,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter("acreText")
     fun showAcres(tv: TextView, value: Number?) {
         if (value == null) {
@@ -237,6 +256,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale", "ResourceAsColor")
+    @JvmStatic
     @BindingAdapter("status")
     fun showStatus(tv: TextView, value: Number?) {
         if (value == null) {
@@ -252,6 +272,7 @@ object BindingUtils {
     }
 
     @SuppressLint("DefaultLocale")
+    @JvmStatic
     @BindingAdapter(value = ["doubleText", "placeHolder"], requireAll = false)
     fun showDouble(tv: TextView, value: Number?, placeHolder: String?) {
         if (value == null || value.toDouble() == 0.0) {
@@ -261,6 +282,7 @@ object BindingUtils {
         tv.text = String.format("%d", value.toInt())
     }
 
+    @JvmStatic
     @BindingAdapter(value = ["commas", "placeHolder"], requireAll = false)
     fun showCommas(tv: TextView, value: Number?, placeHolder: String?) {
         if (value == null || value.toInt() == 0) {
@@ -304,6 +326,7 @@ object BindingUtils {
          }
      }*/
 
+    @JvmStatic
     @BindingAdapter("options")
     fun setOptions(spinner: AppCompatSpinner, options: List<String?>?) {
         if (options != null) {
@@ -328,6 +351,7 @@ object BindingUtils {
             adapter.notifyDataSetChanged();
         }
     }*/
+    @JvmStatic
     @BindingAdapter(value = ["values", "current"], requireAll = false)
     fun setSpinnerData(spinner: AppCompatSpinner, data: List<String?>?, current: String?) {
         if (data != null) {
@@ -397,6 +421,7 @@ object BindingUtils {
         }
     }*/
     @BindingAdapter("layout_weight")
+    @JvmStatic
     fun setLayoutWeight(view: View, weight: Float) {
         val layoutParams: LinearLayout.LayoutParams = view.layoutParams as LinearLayout.LayoutParams
         layoutParams.weight = weight

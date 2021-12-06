@@ -7,7 +7,9 @@ import com.lyecdevelopers.ekibanda.databinding.HomeFragmentBinding
 import com.lyecdevelopers.ekibanda.databinding.ProfileFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
 import javax.inject.Inject
-
+/**
+ * created by jaba
+ * */
 class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>() {
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory

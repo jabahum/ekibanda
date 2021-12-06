@@ -7,6 +7,9 @@ import com.lyecdevelopers.ekibanda.databinding.DiscoverFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
 import javax.inject.Inject
 
+/***
+ * created by jaba
+ * */
 class DiscoverFragment : BaseFragment<DiscoverFragmentBinding, DiscoverViewModel>() {
 
     @Inject
