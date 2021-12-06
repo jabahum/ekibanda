@@ -4,13 +4,36 @@ import android.R
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.databinding.BindingAdapter
+import com.squareup.picasso.Picasso
 import java.util.*
 
 object BindingUtils {
+
+
+    /*@BindingAdapter("image")
+    fun loadImage(view: ImageView, imageUrl: String) {
+        Glide.with(view.context)
+            .load("https://app.foodie-ug.com/$imageUrl")
+            .into(view)
+    }*/
+
+    @BindingAdapter("image")
+    fun loadImage(view: ImageView, imageUrl: String) {
+        Picasso.get().load(imageUrl).fit().into(view)
+    }
+
+
+    /*@BindingAdapter("catImage")
+    fun setImage(view: ImageView, imageUrl: String) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .into(view)
+    }*/
     /* @JvmStatic
      @BindingAdapter("imageDrawable")
      fun setImage(imageView: ImageView, id: Number?) {
@@ -267,19 +290,19 @@ object BindingUtils {
             adapter.notifyDataSetChanged();
         }
     }*/
-   /* @BindingAdapter("districts")
-    fun setDistricts(spinner: AppCompatSpinner, districts: List<String?>?) {
-        if (districts != null) {
-            districts.add(0, "Select District")
-            val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                spinner.getContext(),
-                R.layout.simple_spinner_item, districts
-            )
-            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            spinner.setAdapter(adapter)
-            adapter.notifyDataSetChanged()
-        }
-    }*/
+    /* @BindingAdapter("districts")
+     fun setDistricts(spinner: AppCompatSpinner, districts: List<String?>?) {
+         if (districts != null) {
+             districts.add(0, "Select District")
+             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                 spinner.getContext(),
+                 R.layout.simple_spinner_item, districts
+             )
+             adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+             spinner.setAdapter(adapter)
+             adapter.notifyDataSetChanged()
+         }
+     }*/
 
     @BindingAdapter("options")
     fun setOptions(spinner: AppCompatSpinner, options: List<String?>?) {

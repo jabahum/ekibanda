@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,6 +9,9 @@
             name="image"
             type="java.lang.Integer" />
 
+        <variable
+            name="theater"
+            type="com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheaterItem" />
 
     </data>
 
@@ -26,10 +28,10 @@
             app:cardCornerRadius="10dp">
 
             <androidx.appcompat.widget.AppCompatImageView
+                image="@{theater.image}"
                 android:layout_width="120dp"
                 android:layout_height="180dp"
-                android:scaleType="fitXY"
-                />
+                android:scaleType="fitXY" />
         </com.google.android.material.card.MaterialCardView>
 
 
@@ -37,20 +39,19 @@
             style="@style/TextAppearance.MdcTypographyStyles.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:ellipsize="end"
-            />
+            android:text="@{theater.title}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:visibility="gone"
-            android:ellipsize="end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:ellipsize="end"
             android:textColor="@color/black"
             android:textSize="12sp"
-           />
+            android:visibility="gone" />
     </LinearLayout>
 </layout>

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 class MoviesResponse {
     @SerializedName("items")
     @Expose
-    var items: List<Item>? = null
+    var items: List<MovieItem>? = null
 
     @SerializedName("errorMessage")
     @Expose
