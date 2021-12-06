@@ -39,7 +39,6 @@ class MoviesAdapter(private val listener: MovieItemListener) :
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        var movie = dataList[position]
         holder.onBind(position)
     }
 
