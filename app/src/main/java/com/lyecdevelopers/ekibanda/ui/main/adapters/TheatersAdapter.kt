@@ -86,8 +86,11 @@ class TheatersAdapter(private val listener: TheaterItemListener) :
         private val mBinding: TheaterItemBinding? = binding
         override fun onBind(position: Int) {
             val theaterItem: TheaterItem = dataList[position]
-            if (mBinding != null) {
-                mBinding.theater = theaterItem
+            mBinding?.apply {
+                theater = theaterItem
+                idTheaterItem.setOnClickListener { v ->
+                    listener.onClick(v, theaterItem)
+                }
             }
         }
     }

@@ -85,8 +85,11 @@ class TVsAdapter(private val listener: TvsItemListener) : RecyclerView.Adapter<B
         private val mBinding: TvItemBinding? = binding
         override fun onBind(position: Int) {
             val tvItem: TVItem = dataList[position]
-            if (mBinding != null) {
-                mBinding.tv = tvItem
+            mBinding?.apply {
+                tv = tvItem
+                idTVItem.setOnClickListener { v ->
+                    listener.onClick(v, tvItem)
+                }
             }
         }
     }

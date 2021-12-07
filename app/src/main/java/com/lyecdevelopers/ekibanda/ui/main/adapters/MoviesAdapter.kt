@@ -86,8 +86,11 @@ class MoviesAdapter(private val listener: MovieItemListener) :
         private val mBinding: MovieItemBinding? = binding
         override fun onBind(position: Int) {
             val movieItem: MovieItem = dataList[position]
-            if (mBinding != null) {
-                mBinding.movie = movieItem
+            mBinding?.apply {
+                idMovieItem.setOnClickListener { v->
+                        listener.onClick(v,movieItem)
+                    }
+                movie = movieItem
             }
         }
     }

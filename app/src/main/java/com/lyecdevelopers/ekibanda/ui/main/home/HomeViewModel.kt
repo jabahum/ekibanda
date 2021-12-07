@@ -11,7 +11,9 @@ import com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheatersRes
 import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.MoviesResponse
 import com.lyecdevelopers.ekibanda.data.remote.model.main.tvs.TVsResponse
 import com.lyecdevelopers.ekibanda.ui._base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
@@ -48,57 +50,73 @@ class HomeViewModel @Inject constructor(
     // coming soon
     private fun loadComingSoonFromServer() {
         viewModelScope.launch {
-            _comingSoonResponse.postValue(Resource.loading(null))
-            mainApi.getComingSoon(BuildConfig.API_KEY).let {
-                if (it.isSuccessful) {
-                    _comingSoonResponse.postValue(Resource.success(it.body()))
-                } else
-                    _comingSoonResponse.postValue(Resource.error(it.errorBody().toString(), null))
+            withContext(Dispatchers.IO) {
+                _comingSoonResponse.postValue(Resource.loading(null))
+                mainApi.getComingSoon(BuildConfig.API_KEY).let {
+                    if (it.isSuccessful) {
+                        _comingSoonResponse.postValue(Resource.success(it.body()))
+                    } else
+                        _comingSoonResponse.postValue(Resource.error(it.errorBody().toString(),
+                            null))
+                }
             }
+
         }
     }
 
     // popular movies
     private fun loadPopularMoviesFromServer() {
         viewModelScope.launch {
-            _popularMoviesResponse.postValue(Resource.loading(null))
-            mainApi.getPopularMovies(BuildConfig.API_KEY).let {
-                if (it.isSuccessful) {
-                    _popularMoviesResponse.postValue(Resource.success(it.body()))
-                } else
-                    _popularMoviesResponse.postValue(
-                        Resource.error(
-                            it.errorBody().toString(),
-                            null
+            withContext(Dispatchers.IO) {
+                _popularMoviesResponse.postValue(Resource.loading(null))
+                mainApi.getPopularMovies(BuildConfig.API_KEY).let {
+                    if (it.isSuccessful) {
+                        _popularMoviesResponse.postValue(Resource.success(it.body()))
+                    } else
+                        _popularMoviesResponse.postValue(
+                            Resource.error(
+                                it.errorBody().toString(),
+                                null
+                            )
                         )
-                    )
+                }
             }
+
         }
     }
 
     // popular tvs
     private fun loadPopularTVsFromServer() {
         viewModelScope.launch {
-            _popularTVsResponse.postValue(Resource.loading(null))
-            mainApi.getPopularTVs(BuildConfig.API_KEY).let {
-                if (it.isSuccessful) {
-                    _popularTVsResponse.postValue(Resource.success(it.body()))
-                } else
-                    _popularTVsResponse.postValue(Resource.error(it.errorBody().toString(), null))
+            withContext(Dispatchers.IO) {
+                _popularTVsResponse.postValue(Resource.loading(null))
+                mainApi.getPopularTVs(BuildConfig.API_KEY).let {
+                    if (it.isSuccessful) {
+                        _popularTVsResponse.postValue(Resource.success(it.body()))
+                    } else
+                        _popularTVsResponse.postValue(Resource.error(it.errorBody().toString(),
+                            null))
+                }
             }
+
         }
     }
 
     // in theaters
     private fun loadInTheatersFromServer() {
         viewModelScope.launch {
-            _inTheatersResponse.postValue(Resource.loading(null))
-            mainApi.getInTheaters(BuildConfig.API_KEY).let {
-                if (it.isSuccessful) {
-                    _inTheatersResponse.postValue(Resource.success(it.body()))
-                } else
-                    _inTheatersResponse.postValue(Resource.error(it.errorBody().toString(), null))
+
+            withContext(Dispatchers.IO) {
+                _inTheatersResponse.postValue(Resource.loading(null))
+                mainApi.getInTheaters(BuildConfig.API_KEY).let {
+                    if (it.isSuccessful) {
+                        _inTheatersResponse.postValue(Resource.success(it.body()))
+                    } else
+                        _inTheatersResponse.postValue(Resource.error(it.errorBody().toString(),
+                            null))
+                }
             }
+
         }
     }
 
