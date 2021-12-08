@@ -53,7 +53,7 @@ class MovieDetailFragment : BaseFragment<MoviedetailFragmentBinding, HomeViewMod
         }
 
 
-        binding.viewPager.adapter = MovieViewPagerAdapter(getBaseActivity())
+        binding.viewPager.adapter = MovieViewPagerAdapter(getBaseActivity(),titles.size)
         TabLayoutMediator(binding.tabLayout, binding.viewPager)
         { tab: TabLayout.Tab, position: Int ->
             tab.text = titles[position]

@@ -7,10 +7,10 @@ import com.lyecdevelopers.ekibanda.ui.main.home.movie.CastFragment
 import com.lyecdevelopers.ekibanda.ui.main.home.movie.PhotosFragment
 import com.lyecdevelopers.ekibanda.ui.main.home.movie.ReviewsFragment
 
-class MovieViewPagerAdapter(fragmentActivity: FragmentActivity) :
+class MovieViewPagerAdapter(fragmentActivity: FragmentActivity, private val size: Int) :
     FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return size
     }
 
     override fun createFragment(position: Int): Fragment {
