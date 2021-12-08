@@ -1,14 +1,16 @@
 package com.lyecdevelopers.ekibanda.ui.main.home
 
-import android.graphics.Movie
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.lyecdevelopers.ekibanda.R
 import com.lyecdevelopers.ekibanda.ViewModelProviderFactory
 import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.MovieItem
 import com.lyecdevelopers.ekibanda.databinding.MoviedetailFragmentBinding
 import com.lyecdevelopers.ekibanda.ui._base.BaseFragment
+import com.lyecdevelopers.ekibanda.ui.main.adapters.MovieViewPagerAdapter
 import com.lyecdevelopers.ekibanda.utils.CommonUtils
 import javax.inject.Inject
 
@@ -21,7 +23,9 @@ class MovieDetailFragment : BaseFragment<MoviedetailFragmentBinding, HomeViewMod
 
     lateinit var homeViewModel: HomeViewModel
 
-    private lateinit var  movieItem :MovieItem
+    private lateinit var movieItem: MovieItem
+
+    var titles = arrayOf("Cast", "Photos", "Reviews")
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -47,5 +51,12 @@ class MovieDetailFragment : BaseFragment<MoviedetailFragmentBinding, HomeViewMod
             movieItem = CommonUtils.gsonParser!!.fromJson(selectedMovieItem, MovieItem::class.java)
             binding.movie = movieItem
         }
+
+
+        binding.viewPager.adapter = MovieViewPagerAdapter(getBaseActivity())
+        TabLayoutMediator(binding.tabLayout, binding.viewPager)
+        { tab: TabLayout.Tab, position: Int ->
+            tab.text = titles[position]
+        }.attach()
     }
 }
