@@ -31,5 +31,30 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.lyecdevelopers.ekibanda.ui.main.home.MovieDetailFragment"
         android:label="@string/movie"
-        tools:layout="@layout/moviedetail_fragment"/>
+        tools:layout="@layout/moviedetail_fragment">
+        <action
+            android:id="@+id/action_movieDetailFragment_to_castFragment"
+            app:destination="@id/castFragment" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_photosFragment"
+            app:destination="@id/photosFragment" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_reviewsFragment"
+            app:destination="@id/reviewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/castFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.main.home.movie.CastFragment"
+        android:label="CastFragment"
+        tools:layout="@layout/cast_fragment"/>
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.main.home.movie.ReviewsFragment"
+        android:label="ReviewsFragment"
+        tools:layout="@layout/reviews_fragment"/>
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.lyecdevelopers.ekibanda.ui.main.home.movie.PhotosFragment"
+        android:label="PhotosFragment"
+        tools:layout="@layout/photos_fragment"/>
 </navigation>

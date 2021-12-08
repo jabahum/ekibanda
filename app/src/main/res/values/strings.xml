@@ -9,4 +9,7 @@
     <string name="popular">Popular</string>
     <string name="movie">Movie</string>
     <string name="storyline">STORYLINE</string>
+    <string name="photos">Photos</string>
+    <string name="reviews">Reviews</string>
+    <string name="cast">Cast</string>
 </resources>
