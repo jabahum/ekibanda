@@ -3,8 +3,8 @@ package com.lyecdevelopers.ekibanda.ui.main.home
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.lyecdevelopers.ekibanda.R
@@ -23,6 +23,7 @@ import com.lyecdevelopers.ekibanda.ui.main.home.adapter.CustomAdapter
 import com.lyecdevelopers.ekibanda.ui.main.interfaces.MovieItemListener
 import com.lyecdevelopers.ekibanda.ui.main.interfaces.TheaterItemListener
 import com.lyecdevelopers.ekibanda.ui.main.interfaces.TvsItemListener
+import com.lyecdevelopers.ekibanda.utils.CommonUtils
 import javax.inject.Inject
 
 /**
@@ -45,9 +46,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
     private var currentPage = 0
 
     private lateinit var _items: List<Item>
-    private  var _itemsMovies: List<MovieItem>? = null
-    private  var _itemsTVs: List<TVItem>? = null
-    private  var _itemsTheaters: List<TheaterItem>? = null
+    private var _itemsMovies: List<MovieItem>? = null
+    private var _itemsTVs: List<TVItem>? = null
+    private var _itemsTheaters: List<TheaterItem>? = null
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -129,7 +130,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     Resource.Status.SUCCESS -> {
                         binding.loading = false
                         _itemsTVs = resource.data?.items!!
-                        binding.tvsList  = _itemsTVs
+                        binding.tvsList = _itemsTVs
                     }
                     Resource.Status.ERROR -> {
                         binding.loading = false
@@ -212,15 +213,25 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
     }
 
     override fun onClick(view: View, theater: TheaterItem) {
-        Toast.makeText(getBaseActivity(), "" + theater.fullTitle, Toast.LENGTH_LONG).show()
+        val selectedTheater: String = CommonUtils.gsonParser?.toJson(theater) ?: ""
+        val bundle = Bundle()
+        bundle.putString("theater", selectedTheater)
+        Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
     }
 
     override fun onClick(view: View, tv: TVItem) {
-        Toast.makeText(getBaseActivity(), "" + tv.fullTitle, Toast.LENGTH_LONG).show()
+        val selectedTV: String = CommonUtils.gsonParser?.toJson(tv) ?: ""
+        val bundle = Bundle()
+        bundle.putString("tv", selectedTV)
+        Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
     }
 
     override fun onClick(view: View, movie: MovieItem) {
-        Toast.makeText(getBaseActivity(), "" + movie.fullTitle, Toast.LENGTH_LONG).show()
+        val selectedMovie: String = CommonUtils.gsonParser?.toJson(movie) ?: ""
+        val bundle = Bundle()
+        bundle.putString("movie", selectedMovie)
+        Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
+
     }
 
 }

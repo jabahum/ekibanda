@@ -76,8 +76,6 @@ class MoviesAdapter(private val listener: MovieItemListener) :
         override fun onBind(position: Int) {
             mBinding.message = "No Movies Found"
         }
-
-
     }
 
     // Main ViewHolder
