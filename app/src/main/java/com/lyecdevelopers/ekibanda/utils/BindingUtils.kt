@@ -1,26 +1,15 @@
 package com.lyecdevelopers.ekibanda.utils
 
-import android.R
 import android.annotation.SuppressLint
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatSpinner
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
+import timber.log.Timber
 import java.util.*
 
 object BindingUtils {
-
-
-    /*@BindingAdapter("image")
-    fun loadImage(view: ImageView, imageUrl: String) {
-        Glide.with(view.context)
-            .load("https://app.foodie-ug.com/$imageUrl")
-            .into(view)
-    }*/
 
     @BindingAdapter("image")
     @JvmStatic
@@ -29,36 +18,18 @@ object BindingUtils {
     }
 
 
-    /*@BindingAdapter("catImage")
-    fun setImage(view: ImageView, imageUrl: String) {
-        Glide.with(view.context)
-            .load(imageUrl)
-            .into(view)
-    }*/
-    /* @JvmStatic
-     @BindingAdapter("imageDrawable")
-     fun setImage(imageView: ImageView, id: Number?) {
-         if (id != null) {
-             try {
-                 imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, id.toInt()))
-             } catch (e: Exception) {
-                 Timber.e(e)
-             }
-         }
-     }
- */
-    /*   @SuppressLint("DefaultLocale")
-    @BindingAdapter(value = {"zonedDate", "format"}, requireAll = false)
-    public static void setZonedDateTime(TextView tv, ZonedDateTime dateTime, String format) {
-        if (dateTime == null) {
-            tv.setText("");
-        } else {
-            if (format == null) {
-                format = "dd MM yyyy";
+    @JvmStatic
+    @BindingAdapter("drawableImage")
+    fun drawableImage(imageView: ImageView, id: Number?) {
+        if (id != null) {
+            try {
+                imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, id.toInt()))
+            } catch (e: Exception) {
+                Timber.e(e)
             }
-            tv.setText(DateTimeFormatter.ofPattern(format).format(dateTime));
         }
-    }*/
+    }
+
     @SuppressLint("DefaultLocale")
     @JvmStatic
     @BindingAdapter(value = ["date"], requireAll = false)
@@ -292,139 +263,4 @@ object BindingUtils {
         tv.text = String.format(Locale.US, "%s", CommonUtils.commas(value.toInt()))
     }
 
-    /*@BindingAdapter("capitalize")
-    fun capitalizeText(tv: TextView, text: String?) {
-        tv.setText(StringUtils.capitalize(text))
-    }*/
-
-    /*@BindingAdapter({"crops"})
-    public static void setCrops(AppCompatSpinner spinner, List<Crop> crops) {
-        if (crops != null) {
-            List<String> parsedCrops = CommonUtils.cropsToString(crops);
-            parsedCrops.add(0, "Select Crop");
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(spinner.getContext(),
-                    android.R.layout.simple_spinner_item, parsedCrops);
-
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            spinner.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-        }
-    }*/
-    /* @BindingAdapter("districts")
-     fun setDistricts(spinner: AppCompatSpinner, districts: List<String?>?) {
-         if (districts != null) {
-             districts.add(0, "Select District")
-             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                 spinner.getContext(),
-                 R.layout.simple_spinner_item, districts
-             )
-             adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-             spinner.setAdapter(adapter)
-             adapter.notifyDataSetChanged()
-         }
-     }*/
-
-    @JvmStatic
-    @BindingAdapter("options")
-    fun setOptions(spinner: AppCompatSpinner, options: List<String?>?) {
-        if (options != null) {
-            val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                spinner.context,
-                R.layout.simple_spinner_item, options
-            )
-            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-            adapter.notifyDataSetChanged()
-        }
-    }
-
-    /*@BindingAdapter({"districts"})
-    public static void setDistrictsAutoComplete(AutoCompleteTextView autoCompleteTextView, List<String> districts) {
-        if (districts != null) {
-            CustomSpinnerItemAdapter adapter = new CustomSpinnerItemAdapter(autoCompleteTextView.getContext(), R.layout.custom_spinner_item_row, districts);
-
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            autoCompleteTextView.setThreshold(1);
-            autoCompleteTextView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-        }
-    }*/
-    @JvmStatic
-    @BindingAdapter(value = ["values", "current"], requireAll = false)
-    fun setSpinnerData(spinner: AppCompatSpinner, data: List<String?>?, current: String?) {
-        if (data != null) {
-            val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                spinner.context,
-                R.layout.simple_spinner_item, data
-            )
-            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-            adapter.notifyDataSetChanged()
-            if (current != null && data.contains(current)) {
-                spinner.setSelection(adapter.getPosition(current))
-            }
-        }
-    }
-
-    /*    @BindingAdapter(value = {"data", "current"}, requireAll = false)
-    public static void setCustomSpinnerData(AppCompatSpinner spinner, List<String> data, String current) {
-        if (data != null) {
-            SpinnerItemAdapter adapter = new SpinnerItemAdapter(spinner.getContext(), R.layout.spinner_item_row, data);
-
-            spinner.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-
-            if (current != null && data.contains(current)) {
-                spinner.setSelection(adapter.getPosition(current));
-            }
-        }
-    }*/
-    // Disabled
-    /*@BindingAdapter({"enabled"})
-    public static void setSpinnerEnabled(AppCompatSpinner spinner, @Nullable Boolean enabled) {
-        if (enabled == null || enabled) {
-            spinner.setBackground(spinner.getContext().getResources().getDrawable(R.drawable.textview_demand_dropdown_selector));
-            spinner.setEnabled(true);
-            // Set Text Color
-            if (spinner.getChildAt(spinner.getSelectedItemPosition()) != null) {
-                ((TextView) spinner.getChildAt(spinner.getSelectedItemPosition())).setTextColor(spinner.getContext().getResources().getColor(R.color.colorPrimary));
-            }
-        } else {
-            spinner.setBackground(spinner.getContext().getResources().getDrawable(R.drawable.border_grey));
-            spinner.setEnabled(false);
-
-            if (spinner.getChildAt(spinner.getSelectedItemPosition()) != null) {
-                ((TextView) spinner.getChildAt(spinner.getSelectedItemPosition())).setTextColor(spinner.getContext().getResources().getColor(R.color.grey_500));
-            }
-        }
-    }*/
-    /*    @BindingAdapter({"spinnerEnabled"})
-    public static void setSpinnerImageEnabled(ImageView imageView, @Nullable Boolean enabled) {
-        if (enabled == null || enabled) {
-            imageView.setEnabled(true);
-            imageView.setImageDrawable(AppCompatResources.getDrawable(imageView.getContext(), R.drawable.textview_demand_dropdown_selector));
-        } else {
-            imageView.setImageDrawable(AppCompatResources.getDrawable(imageView.getContext(), R.drawable.border_grey));
-            imageView.setEnabled(false);
-        }
-    }*/
-    /* @BindingAdapter({"enabled"})
-    public static void setTextViewEnabled(TextView textView, @Nullable Boolean enabled) {
-        if (enabled == null || enabled) {
-            textView.setEnabled(true);
-            textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorPrimary));
-        } else {
-            textView.setTextColor(textView.getContext().getResources().getColor(R.color.grey_500));
-            textView.setEnabled(false);
-        }
-    }*/
-    @BindingAdapter("layout_weight")
-    @JvmStatic
-    fun setLayoutWeight(view: View, weight: Float) {
-        val layoutParams: LinearLayout.LayoutParams = view.layoutParams as LinearLayout.LayoutParams
-        layoutParams.weight = weight
-        view.layoutParams = layoutParams
-    }
 }
