@@ -9,6 +9,8 @@ import com.lyecdevelopers.ekibanda.data.remote.model.common.Resource
 import com.lyecdevelopers.ekibanda.data.remote.model.main.comingsoon.ComingResponse
 import com.lyecdevelopers.ekibanda.data.remote.model.main.inTheaters.TheatersResponse
 import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.MoviesResponse
+import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.moviedetail.cast.MovieDetailCastResponse
+import com.lyecdevelopers.ekibanda.data.remote.model.main.movies.moviedetail.photos.MovieDetailPhotosResponse
 import com.lyecdevelopers.ekibanda.data.remote.model.main.tvs.TVsResponse
 import com.lyecdevelopers.ekibanda.ui._base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
@@ -40,11 +42,20 @@ class HomeViewModel @Inject constructor(
 
     val inTheatersResponse: LiveData<Resource<TheatersResponse?>> get() = _inTheatersResponse
 
+    // cast
+    private val _castResponse = MediatorLiveData<Resource<MovieDetailCastResponse?>>()
+
+    val castResponse: LiveData<Resource<MovieDetailCastResponse?>> get() = _castResponse
+
+    // photos
+    private val _photosResponse = MediatorLiveData<Resource<MovieDetailPhotosResponse?>>()
+
+    val photosResponse: LiveData<Resource<MovieDetailPhotosResponse?>> get() = _photosResponse
+
     init {
         loadComingSoonFromServer()
         loadPopularMoviesFromServer()
         loadPopularTVsFromServer()
-        loadInTheatersFromServer()
     }
 
     // coming soon
@@ -102,17 +113,34 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    // in theaters
-    private fun loadInTheatersFromServer() {
+    //  photos
+    fun loadPhotosFromServer(movieId:String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                _photosResponse.postValue(Resource.loading(null))
+                mainApi.getMovieDetailPhotos(BuildConfig.API_KEY,movieId).let {
+                    if (it.isSuccessful) {
+                        _photosResponse.postValue(Resource.success(it.body()))
+                    } else
+                        _photosResponse.postValue(Resource.error(it.errorBody().toString(),
+                            null))
+                }
+            }
+
+        }
+    }
+
+    //  cast
+    fun loadCastFromServer(movieId: String) {
         viewModelScope.launch {
 
             withContext(Dispatchers.IO) {
-                _inTheatersResponse.postValue(Resource.loading(null))
-                mainApi.getInTheaters(BuildConfig.API_KEY).let {
+                _castResponse.postValue(Resource.loading(null))
+                mainApi.getMovieDetailCast(BuildConfig.API_KEY,movieId).let {
                     if (it.isSuccessful) {
-                        _inTheatersResponse.postValue(Resource.success(it.body()))
+                        _castResponse.postValue(Resource.success(it.body()))
                     } else
-                        _inTheatersResponse.postValue(Resource.error(it.errorBody().toString(),
+                        _castResponse.postValue(Resource.error(it.errorBody().toString(),
                             null))
                 }
             }

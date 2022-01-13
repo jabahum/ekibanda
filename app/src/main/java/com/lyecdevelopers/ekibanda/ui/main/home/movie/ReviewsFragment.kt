@@ -12,7 +12,7 @@ import com.lyecdevelopers.ekibanda.ui.main.home.HomeViewModel
 import com.lyecdevelopers.ekibanda.ui.main.home.movie.adapter.ReviewsAdapter
 import javax.inject.Inject
 
-class ReviewsFragment : BaseFragment<ReviewsFragmentBinding, HomeViewModel>() {
+class ReviewsFragment(private val movieId:String) : BaseFragment<ReviewsFragmentBinding, HomeViewModel>() {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory

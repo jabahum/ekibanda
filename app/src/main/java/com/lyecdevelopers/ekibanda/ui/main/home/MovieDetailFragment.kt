@@ -25,7 +25,7 @@ class MovieDetailFragment : BaseFragment<MoviedetailFragmentBinding, HomeViewMod
 
     private lateinit var movieItem: MovieItem
 
-    var titles = arrayOf("Cast", "Photos", "Reviews")
+    var titles = arrayOf("Cast", "Photos")
 
     override fun getViewModel(): HomeViewModel {
         homeViewModel =
@@ -53,7 +53,8 @@ class MovieDetailFragment : BaseFragment<MoviedetailFragmentBinding, HomeViewMod
         }
 
 
-        binding.viewPager.adapter = MovieViewPagerAdapter(getBaseActivity(),titles.size)
+        binding.viewPager.adapter =
+            movieItem.id?.let { MovieViewPagerAdapter(getBaseActivity(),titles.size, it) }
         TabLayoutMediator(binding.tabLayout, binding.viewPager)
         { tab: TabLayout.Tab, position: Int ->
             tab.text = titles[position]

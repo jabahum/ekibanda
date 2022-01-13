@@ -7,7 +7,7 @@ import com.lyecdevelopers.ekibanda.ui.main.home.movie.CastFragment
 import com.lyecdevelopers.ekibanda.ui.main.home.movie.PhotosFragment
 import com.lyecdevelopers.ekibanda.ui.main.home.movie.ReviewsFragment
 
-class MovieViewPagerAdapter(fragmentActivity: FragmentActivity, private val size: Int) :
+class MovieViewPagerAdapter(fragmentActivity: FragmentActivity, private val size: Int,private val  movieId :String) :
     FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
         return size
@@ -15,10 +15,9 @@ class MovieViewPagerAdapter(fragmentActivity: FragmentActivity, private val size
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return CastFragment()
-            1 -> return PhotosFragment()
-            2 -> return ReviewsFragment()
+            0 -> return CastFragment(movieId)
+            1 -> return PhotosFragment(movieId)
         }
-        return CastFragment()
+        return CastFragment(movieId)
     }
 }

@@ -222,7 +222,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
     override fun onClick(view: View, tv: TVItem) {
         val selectedTV: String = CommonUtils.gsonParser?.toJson(tv) ?: ""
         val bundle = Bundle()
-        bundle.putString("tv", selectedTV)
+        bundle.putString("movie", selectedTV)
         Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
     }
 
