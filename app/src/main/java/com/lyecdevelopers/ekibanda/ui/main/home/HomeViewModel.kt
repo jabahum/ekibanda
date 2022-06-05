@@ -56,6 +56,7 @@ class HomeViewModel @Inject constructor(
         loadComingSoonFromServer()
         loadPopularMoviesFromServer()
         loadPopularTVsFromServer()
+        loadIntheatersFromServer()
     }
 
     // coming soon
@@ -110,6 +111,22 @@ class HomeViewModel @Inject constructor(
                 }
             }
 
+        }
+    }
+
+    // in theaters
+    private fun loadIntheatersFromServer(){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                _inTheatersResponse.postValue(Resource.loading(null))
+                mainApi.getInTheaters(BuildConfig.API_KEY).let {
+                    if (it.isSuccessful){
+                        _inTheatersResponse.postValue(Resource.success(it.body()))
+                    }else{
+                        _inTheatersResponse.postValue(Resource.error(it.errorBody().toString(),null))
+                    }
+                }
+            }
         }
     }
 

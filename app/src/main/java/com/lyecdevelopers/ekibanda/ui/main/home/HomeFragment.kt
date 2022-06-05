@@ -84,7 +84,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
 
         // fetch data
         // coming soon
-        homeViewModel.comingResponse.observe(getBaseActivity(), {
+        homeViewModel.comingResponse.observe(getBaseActivity()) {
             it?.let { resource ->
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
@@ -103,10 +103,10 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     }
                 }
             }
-        })
+        }
 
         // popular movies
-        homeViewModel.popularMoviesResponse.observe(getBaseActivity(), {
+        homeViewModel.popularMoviesResponse.observe(getBaseActivity()) {
             it?.let { resource ->
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
@@ -122,9 +122,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     }
                 }
             }
-        })
+        }
         // popular tvs
-        homeViewModel.popularTVsResponse.observe(getBaseActivity(), {
+        homeViewModel.popularTVsResponse.observe(getBaseActivity()) {
             it?.let { resource ->
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
@@ -140,9 +140,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     }
                 }
             }
-        })
+        }
         // in theaters
-        homeViewModel.inTheatersResponse.observe(getBaseActivity(), {
+        homeViewModel.inTheatersResponse.observe(getBaseActivity()) {
             it?.let { resource ->
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
@@ -159,7 +159,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
                     }
                 }
             }
-        })
+        }
 
         // populate the views
         // recyclerview
@@ -216,7 +216,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(), Theater
         val selectedTheater: String = CommonUtils.gsonParser?.toJson(theater) ?: ""
         val bundle = Bundle()
         bundle.putString("theater", selectedTheater)
-        Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
+//        Navigation.findNavController(view).navigate(R.id.movieDetailFragment,bundle)
     }
 
     override fun onClick(view: View, tv: TVItem) {

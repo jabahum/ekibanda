@@ -9,13 +9,16 @@
         <entry key="app/src/main/res/layout/actor_item.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/cast_fragment.xml" value="0.12084690553745929" />
         <entry key="app/src/main/res/layout/cast_item.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/empty_view.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.12203947368421053" />
         <entry key="app/src/main/res/layout/movie_item.xml" value="0.19025641025641027" />
         <entry key="app/src/main/res/layout/moviedetail_fragment.xml" value="0.12203947368421053" />
         <entry key="app/src/main/res/layout/photo_item.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/photos_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/reviews_fragment.xml" value="0.12203947368421053" />
+        <entry key="app/src/main/res/layout/theater_item.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/tv_item.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19375" />
       </map>
     </option>
   </component>
